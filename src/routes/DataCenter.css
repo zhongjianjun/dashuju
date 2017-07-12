@@ -1,0 +1,39 @@
+.two_nav{background-color: #292929;height:49px;border-top:1px solid #39393d;}
+
+
+.header_banner{background: url(../assets/header_banner.jpg) no-repeat center top;height:150px;line-height: 150px;}
+.header_banner .header_name{color:#fff;font-size: 30px;}
+
+.dropdown{float:left;}
+.dropdown .ant_dropdown_link{color:#fff;font-size:15px;line-height:49px;display: block;width:120px;text-align: center;}
+.dropdown .ant_dropdown_link:hover{background-color: #2cb7f5;}
+
+.two_nav_right{float:right;}
+.city_dropdown{float:left;}
+.city_dropdown .ant_dropdown_link{color:#fff;font-size:15px;line-height:49px;display: block;width:100px;text-align: center;}
+.city_dropdown .ant_dropdown_link:hover{background-color: #1b1e20}
+.city_dropdown .city_name{padding-left:10px;padding-right:10px;}
+
+.person_dropdown{float:left;}
+.person_dropdown .ant_dropdown_link{line-height:49px;display: block;width:60px;text-align: center;}
+.person_dropdown .ant_dropdown_link:hover{background-color: #1b1e20}
+.person_dropdown .avatar_img{vertical-align: middle}
+
+.content_box{position: relative;margin-top:13px;padding-bottom:40px;}
+.content_box .division_dropdown{position: absolute;right:0;top:0}
+.content_box .ant_dropdown_link{width:158px;height:30px;line-height: 30px;border:1px solid #d7e1e6;display: block;color:#333;font-size:14px;text-indent:10px;position: relative;}
+.content_box .division_icon{position: absolute;right:10px;top:8px;}
+:global(.ant-tabs-nav-container){font-size:16px;}
+
+.show_more{text-align:center;padding:100px 0}
+.show_more .show_icon{color:#d4dbdf;font-size:80px;}
+.show_more .show_info{color:#666;font-size:16px;padding-top: 30px;}
+.show_more .show_btn{display: block;width: 200px;height:40px;line-height: 40px;text-align: center;background-color: #2cb7f5;color:#fff;font-size: 16px;margin:30px auto 0;}
+.show_more .login_info{color:#666;font-size:14px;padding-top:16px;}
+.show_more .login_btn{color:#1fa4df;}
+
+.tit_box{border:1px dashed #95dbfa;background-color: #f9fbfc;color:#333;font-size:12px;height:38px;line-height: 38px;padding-left:20px;margin-top:10px;}
+.tit_box .tit_list{}
+.tit_box .tit_name{color:#999;}
+
+.table_box{padding-top:30px;}

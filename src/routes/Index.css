@@ -1,0 +1,35 @@
+
+
+.banner_box{background: url(../assets/index_banner.jpg) no-repeat center top;height:600px;}
+.banner_box .banner_info{color:#fff;text-align: center;}
+.banner_box .info_main{font-size: 50px;padding-top: 80px;}
+.banner_box .info_mian2{font-size: 24px;letter-spacing: 12px;padding-top: 16px;padding-bottom: 28px;}
+.banner_box .point{padding: 0 20px}
+.banner_box .use_btn{display: inline-block;width: 120px;height: 36px;line-height: 36px;text-align: center;color:#fff;background-color: #2cb7f5;font-size: 16px;border-radius: 18px;}
+.banner_box .use_btn:hover{background-color: #00a8f3}
+
+.product_box{padding:40px 0 60px}
+.product_box .product_list{padding-right: 30%}
+.product_box .product_name{font-size: 20px;color: #333;}
+.product_box .product_info{color: #333;font-size: 14px;line-height: 24px;padding-top:30px;}
+
+
+.features_box{background-color: #0b0c12}
+.features_box .features_cont{position: relative;padding-bottom: 100px;padding-top: 80px;}
+.features_box .title_name{color: #fff;font-size: 50px;text-align: center;padding-bottom: 90px;}
+.features_box .features_list{color:#888;}
+.features_box .features_img_box{float: left;width: 270px}
+.features_box .features_info{float: left;}
+.features_box .info_tit{font-size: 20px;padding-top: 10px;}
+.features_box .info_list_box{font-size: 16px;line-height: 30px;padding-top: 20px;}
+
+.features_box .padd_t{padding-top: 180px;}
+.features_box .drop_down{position: absolute;left:50%;bottom:40px;margin-left:-29px;}
+
+.advantage_box{background-color: #fafafa}
+.advantage_box .advantage_cont{padding-bottom: 100px;padding-top: 80px;}
+.advantage_box .title_name{color: #000;font-size: 50px;text-align: center;padding-bottom: 90px;}
+.advantage_box .advantage_list{color:#666;text-align: center;}
+.advantage_box .advantage_img_box{height: 170px;}
+.advantage_box .info_tit{font-size: 20px;}
+.advantage_box .info_list_box{font-size: 16px;line-height: 30px;padding-top: 26px;}

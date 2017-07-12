@@ -1,0 +1,32 @@
+
+/*header*/
+.header{background-color: #fafafa;height: 60px;overflow: hidden;border-bottom:1px solid #dee8ed;}
+.header .logo_box{padding-top:12px;float: left;}
+.header .logo_img{float: left;margin-bottom: 6px;}
+.header .logo_text{float: left;color:#666;font-size: 16px;border-left:1px solid #999;height:16px;line-height: 16px;padding-left:15px;margin-left:12px;margin-top:10px;}
+
+.header_right{float: right;}
+
+.nav_box{float: left;}
+.nav_box .nav_list{float: left;line-height: 60px;margin-left: 25px;}
+.nav_box .nav_link{font-size: 15px;color:#333;line-height: 60px;display: block;}
+
+.header_btn{float: left;padding-top: 12px;padding-left: 20px;}
+.header_btn .btn_list{display: block;float: left;height: 34px;line-height: 34px;font-size: 14px;border-radius:3px;width: 70px;text-align: center;margin-left:8px;}
+.header_btn .registered{border:1px solid #2cb7f5;background-color: #2cb7f5;color:#f6fcff;}
+.header_btn .login{border:1px solid #d9d9d9;color:#666;}
+/*header end*/
+
+/*footer*/
+.foot_info{background-color: #fafafa;padding: 70px 0;border-top:1px solid #dee8ed;}
+
+.foot_infos{}
+.foot_infos .foot_info_l{float: left;}
+.foot_infos .code_img{margin-right: 30px;}
+.foot_infos .foot_info_r{float: left;}
+.foot_infos .info_name{color:#666;font-size: 16px;padding-bottom: 10px;padding-top: 4px}
+.foot_infos .info_list{color: #888;font-size: 14px;line-height: 24px;}
+
+.copyright{background-color: #252729;height: 80px;line-height: 80px;color:#888;}
+/*footer end*/
+

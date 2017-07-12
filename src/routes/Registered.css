@@ -1,0 +1,27 @@
+.container{background-color: #fafafa}
+.content{padding:120px 0 260px;}
+.tit_name{font-size: 30px;text-align: center;color:#333}
+.form_box{width: 400px;margin:0 auto;padding-top: 50px;}
+.form_box .input{height: 48px;font-size:14px;color:#333;border-radius: 0px;text-indent: 13px;}
+.form_box .button{width: 100%;height: 50px;background-color: #2cb7f5;font-size: 20px;border-color: #2cb7f5;border-radius: 0px;}
+.form_box .checkbox{color:#333;}
+.form_box .form_item{margin-bottom: 20px}
+.form_box .have{color:#666;font-size: 14px;text-align: center;}
+.form_box .checkbox{color:#333;font-size: 14px;}
+.form_box .search_btn{background-color: #e9eced;display: inline-block;border:1px solid #d9d9d9;height:48px;line-height:48px;border-left:0;text-align:center;color:#666;font-size:14px;}
+
+:global(.ant-input-group-wrapper){width: 100%}
+/* :global(.ant-input-group-addon){cursor:pointer;color:#666;font-size: 14px;border-radius: 0;width:110px;} */
+:global(.ant-checkbox){top:-2px}
+:global(.ant-form-item-control){line-height: auto;}
+
+/*登录*/
+:global(.yzm_code .ant-input-group-addon){background: none;}
+.form_box .forget_pwd{position: absolute;right:0;top:0;color:#333;font-size:14px;display: block;height: 48px;line-height:48px;width:110px;text-align:center;}
+/*登录 end*/
+
+/*修改密码*/
+.btn_box{}
+.btn_box .return{color:#666;font-size:20px;height: 50px;width:100%;border-radius: 0}
+
+/*修改密码 end*/
