@@ -1,19 +1,12 @@
 import request from '../utils/request';
 
 const publicInterface = {
-    
-    // login: (parameter) => {
-    //     return request(parameter.type ? 'http://192.168.1.22:88/account/login' : 'http://192.168.1.22:88/account/login-service', {
-    //         body: parameter
-    //     })
-    // },
 
     //登陆注册管理
 
     //登陆
     login: (parameter) => {
         return request('user/login', {
-            // method:'GET',
             body: parameter
         })
     },
@@ -50,8 +43,7 @@ const publicInterface = {
     //验证码生成接口
     validateCode: (parameter) => {
         return request('rand/validateCode', {
-            method: 'GET',
-            body: parameter
+            body: parameter,
         })
     },
 

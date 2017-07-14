@@ -8,24 +8,58 @@ import styles2 from '../index.css';
 import styles from './Registered.css';
 
 class Registereda extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      verificationCodeType: "1",
+      count: 5,
+      liked: true
+    };
+  }
+  checkPassword = (rule, value, callback) => {
+    const form = this.props.form;
+    if (value && value !== form.getFieldValue('password')) {
+      callback('两次输入的密码不一致');
+    } else {
+      callback();
+    }
+  }
+  handleClick = (e) => {
+    e.preventDefault();
+    let verificationCodeType = this.state.verificationCodeType;
+    let codeProps = this.props;
+    this.props.form.validateFields(['mobile'], function (errors, values) {
+      if (errors) {
+        return;
+      }
+      codeProps.dispatch({
+        type: 'registered/sendVerificationCode',
+        payload: {
+          mobile: values.mobile,
+          verificationCodeType: verificationCodeType
+        }
+      })
+      console.log(values.mobile, verificationCodeType);
+    });
+  }
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (err) {
         return;
       }
+      this.props.dispatch({
+        type: 'registered/register',
+        payload: {
+          ...values,
+          verificationCodeType: this.state.verificationCodeType
+        }
+      })
     });
   }
-    checkPassword = (rule, value, callback) => {
-      const form = this.props.form;
-      if (value && value !== form.getFieldValue('password')) {
-        callback('两次输入的密码不一致');
-      } else {
-        callback();
-      }
-    }
   render() {
     const { getFieldDecorator } = this.props.form;
+    let text = this.state.liked ? '获取验证码' : this.state.count + '秒后重发';
     return (
       <div className={styles.container}>
         <div className={styles2.wrap + " " + styles.content}>
@@ -34,17 +68,17 @@ class Registereda extends React.Component {
             <Form onSubmit={this.handleSubmit}>
               <FormItem className={styles.form_item}>
                 {getFieldDecorator("mobile", {
-                  rules: [{ required: true, message: "请输入手机号码" },{pattern: /^1[34578]{1}\d{9}$/, message: "您输入的手机号有误" }]
+                  rules: [{ required: true, message: "请输入手机号码" }, { pattern: /^1[34578]{1}\d{9}$/, message: "您输入的手机号有误" }]
                 })(<Input className={styles.input} placeholder="请输入手机号码" />)}
               </FormItem>
               <FormItem className={styles.form_item}>
                 {getFieldDecorator("password", {
-                  rules: [{ required: true, message: "请输入登录密码" },{pattern: /^(\w){6,14}$/, message: "请输入6-14位字符的密码" }]
+                  rules: [{ required: true, message: "请输入登录密码" }, { pattern: /^(\w){6,14}$/, message: "请输入6-14位字符的密码" }]
                 })(<Input className={styles.input} type="password" placeholder="设置您的登录密码" />)}
               </FormItem>
               <FormItem className={styles.form_item}>
                 {getFieldDecorator("confirm", {
-                  rules: [{ required: true, message: "请再次输入您的登录密码" },{pattern: /^(\w){6,14}$/, message: "请输入6-14位字符的密码" }, {validator: this.checkPassword}]
+                  rules: [{ required: true, message: "请再次输入您的登录密码" }, { pattern: /^(\w){6,14}$/, message: "请输入6-14位字符的密码" }, { validator: this.checkPassword }]
                 })(<Input className={styles.input} type="password" placeholder="请再次输入您的登录密码" />)}
               </FormItem>
               <FormItem className={styles.form_item}>
@@ -52,7 +86,7 @@ class Registereda extends React.Component {
                   {getFieldDecorator("authCode", {
                     rules: [{ required: true, message: "请输入短信验证码" }]
                   })(<Input style={{ width: '70%' }} className={styles.input} placeholder="请输入短信验证码" />)}
-                  <a style={{ width: '30%' }} className={styles.search_btn}>获取验证码</a>
+                  <button style={{ width: '30%' }} className={styles.search_btn} onClick={this.handleClick.bind(this)} disabled={!this.state.liked}>{text}</button>
                 </InputGroup>
               </FormItem>
               <FormItem className={styles.form_item}>

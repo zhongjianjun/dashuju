@@ -4,28 +4,29 @@ import { routerRedux } from 'dva/router';
 export default {
   namespace: 'login',
   state: {
-    token: ""
+    token: "",
+    codeUrl: "",
+    imgKey: ""
   },
   reducers: {
-    // concat(state, { payload }) {
-    //   return { ...state, ...payload };
-    // }
+    concat(state, { payload }) {
+      return { ...state, ...payload };
+    }
   },
   effects: {
     *init({ payload }, { call, put }) {
-      const { data } = yield call(publicInterface.validateCode, payload);
-      console.log(data);
-      // yield put({
-      //   type: 'concat',
-      //   payload: {
-      //   },
-      // });
+      const { data }= yield call(publicInterface.validateCode, payload);
+      yield put({
+        type: 'concat',
+        payload: {
+          codeUrl:data.img || '',
+          imgKey:data.imgKey || ''
+        },
+      });
     },
     *login({ payload }, { call, put }) {
       const datas = yield call(publicInterface.login, payload);
-
       let data = datas.data || [];
-
       //存入token
       for (let x in data) {
         if (data[x] && typeof data[x] !== 'object') {

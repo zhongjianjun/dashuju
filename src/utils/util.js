@@ -10,6 +10,6 @@ export function getToken(key) {
         });
         return arr[key]||arr;
     } else {
-        return false;
+        return '';
     }
 }

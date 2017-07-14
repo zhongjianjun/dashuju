@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Menu, Dropdown, Icon, Tabs, Row, Col,Table } from 'antd';
+import { Menu, Dropdown, Icon, Tabs, Row, Col, Table, Button, Radio } from 'antd';
 const SubMenu = Menu.SubMenu;
 const TabPane = Tabs.TabPane;
 
@@ -9,6 +9,9 @@ import styles from './DataCenter.css';
 
 
 function DataCenter() {
+  function pageChange(page, pageSize){
+    console.log(page, pageSize);
+  }
   const menu = (
     <Menu>
       <SubMenu title={<span>商品房交易数据</span>}>
@@ -35,7 +38,7 @@ function DataCenter() {
   const personmenu = (
     <Menu>
       <Menu.Item>1312345****</Menu.Item>
-      <Menu.Item><a><Icon type="edit" /> 修改密码</a></Menu.Item>
+      <Menu.Item><a href="/#/modify"><Icon type="edit" /> 修改密码</a></Menu.Item>
       <Menu.Item><a><Icon type="logout" /> 退出</a></Menu.Item>
     </Menu>
   );
@@ -93,6 +96,11 @@ const data = [{
   age: 32,
   address: 'Sidney No. 1 Lake Park',
 }];
+const paginationProps={
+  showTotal: total => `Total ${total} items`,
+  onChange: pageChange,
+  total: 100,
+}
 
   return (
     <div>
@@ -124,13 +132,21 @@ const data = [{
         <div className={styles.content_box}>
           <Tabs defaultActiveKey="1">
             <TabPane tab="新建商品住宅" key="1">
-              <div>时间周期：</div>
+
+              <div>
+                <span>时间周期：</span>
+                <Radio.Group value="large">
+                  <Radio.Button value="large">Large</Radio.Button>
+                  <Radio.Button value="default">Default</Radio.Button>
+                  <Radio.Button value="small">Small</Radio.Button>
+                </Radio.Group>
+              </div>
               <Row className={styles.tit_box}>
                 <Col span={12}><div className={styles.tit_list}><span className={styles.tit_name}>所选时段：</span>2017/06/01 - 2017/06/07</div></Col>
                 <Col span={12}><div className={styles.tit_list}><span className={styles.tit_name}>排序：</span>按签约套数降序</div></Col>
               </Row>
               <Row className={styles.table_box}>
-                <Col span={24}><Table columns={columns} dataSource={data} /></Col>
+                <Col span={24}><Table columns={columns} dataSource={data} pagination={paginationProps}/></Col>
               </Row>
             </TabPane>
             <TabPane tab="新建商住公寓" key="2">

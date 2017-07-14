@@ -1,7 +1,7 @@
 import fetch from 'dva/fetch';
 import { message } from 'antd';
 import { getToken } from './util';
-import { browserHistory,hashHistory } from 'dva/router';
+import { browserHistory, hashHistory } from 'dva/router';
 
 function parseJSON(response) {
   return response.json();
@@ -11,7 +11,6 @@ function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
   }
-
   const error = new Error(response.statusText);
   error.response = response;
   throw error;
@@ -25,7 +24,6 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default function request(url, options, call = () => { }, err = () => { }) {
-  console.log(options)
   options.method = options.method || 'POST';
   let urls;
   if (url.indexOf('.') > 0) {
@@ -33,26 +31,34 @@ export default function request(url, options, call = () => { }, err = () => { })
   } else {
     urls = (options.domain ? getToken(options.domain) : 'http://192.168.1.162:8802/') + url;
   }
-  options.body = {
-    data: options.body || {},
-    token: getToken('userToken')
+  if (options.method == 'POST') {
+    options.body = {
+      data: options.body || {},
+      token: getToken('token'),
+      platformSystemNum: "",
+      operationName: "",
+      serviceName: "",
+      methodName: "",
+      platformFrom: "",
+    }
+    options.body = JSON.stringify(options.body);
   }
-  options.body = JSON.stringify(options.body);
+  options.headers = {
+    'Content-Type': 'application/json'
+  };
   return fetch(urls, options)
     .then(checkStatus)
     .then(parseJSON)
     .then(data => {
+      //console.log(data, "data返回值")
       if (data.code === 20000) {
-        call();
-        data.message && message.success(data.message);
-
       } else {
-        if (data.code === 49090) {
-          setTimeout(() => {
-            hashHistory.push('/login');
-          }, 1000);
-        }
-        data.message && message.error(data.message);
+        // if (data.code === 49090) {
+        //   setTimeout(() => {
+        //     hashHistory.push('/login');
+        //   }, 1000);
+        // }
+        data.error && message.error(data.error.errorMsg);
       }
       return data;
     })
