@@ -9,9 +9,9 @@ import styles from './Registered.css';
 
 class Registereda extends React.Component {
   handleClick = (props) => {
-      this.props.dispatch({
-        type: 'login/init'
-      })
+    this.props.dispatch({
+      type: 'login/init'
+    })
   }
   handleSubmit = (e) => {
     let imgKeys = this.props.login.imgKey
@@ -54,7 +54,7 @@ class Registereda extends React.Component {
                   {getFieldDecorator("authCode", {
                     rules: [{ required: true, message: "请输入验证码" }]
                   })(<Input style={{ width: '70%' }} className={styles.input} placeholder="请输入验证码" />)}
-                  <a style={{ width: '30%', backgroundColor: '#fff' }} className={styles.search_btn} onClick={this.handleClick.bind(this)}><img className={styles.code_img} src={'data:image/jpg;base64,'+ codeUrl} /></a>
+                  <a style={{ width: '30%', backgroundColor: '#fff' }} className={styles.search_btn} onClick={this.handleClick.bind(this)}><img className={styles.code_img} src={'data:image/jpg;base64,' + codeUrl} /></a>
                 </InputGroup>
               </FormItem>
               <FormItem className={styles.form_item}>
@@ -71,6 +71,6 @@ class Registereda extends React.Component {
 const Registered = Form.create()(Registereda);
 
 function mapStateToProps(state) {
-  return {...state};
+  return { ...state };
 }
 export default connect(mapStateToProps)(Registered);

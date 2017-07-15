@@ -9,12 +9,12 @@ export default {
     }
   },
   effects: {
-    // *find({ payload }, { call, put }) {
-    //   const datas = yield call(publicInterface.find, payload);
+    *find({ payload }, { call, put }) {
+      const datas = yield call(publicInterface.residence, payload);
 
-    //   let data = datas.data || [];
+      let data = datas.data || [];
 
-    // },
+    },
     // *sendVerificationCode({ payload }, { call, put }) {
     //   const datas = yield call(publicInterface.sendVerificationCode, payload);
     //   console.log(datas);
@@ -23,5 +23,15 @@ export default {
     // }
   },
   subscriptions: {
+
+    // setup({ dispatch, history }) {
+    //   return history.listen(({ pathname, query }) => {
+    //     if (pathname === '/datacenter') {
+    //       dispatch({ type: 'init' });
+    //     }
+    //   });
+    // }
+
+
   },
 };

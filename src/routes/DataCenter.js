@@ -135,11 +135,7 @@ const paginationProps={
 
               <div>
                 <span>时间周期：</span>
-                <Radio.Group value="large">
-                  <Radio.Button value="large">Large</Radio.Button>
-                  <Radio.Button value="default">Default</Radio.Button>
-                  <Radio.Button value="small">Small</Radio.Button>
-                </Radio.Group>
+                <a>近一周</a>
               </div>
               <Row className={styles.tit_box}>
                 <Col span={12}><div className={styles.tit_list}><span className={styles.tit_name}>所选时段：</span>2017/06/01 - 2017/06/07</div></Col>

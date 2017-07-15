@@ -16,6 +16,23 @@ class Registereda extends React.Component {
       liked: true
     };
   }
+  //校验手机号是否唯一
+  ajaxCheck = () => {
+    let codeProps = this.props;
+    this.props.form.validateFields(['mobile'], function (errors, values) {
+      if (errors) {
+        return;
+      }
+      codeProps.dispatch({
+        type: 'registered/checkMobile',
+        payload: {
+          mobile: values.mobile,
+        }
+      });
+      console.log(codeProps.isExist, 1654);
+    });
+  }
+  //密码验证
   checkPassword = (rule, value, callback) => {
     const form = this.props.form;
     if (value && value !== form.getFieldValue('password')) {
@@ -24,6 +41,7 @@ class Registereda extends React.Component {
       callback();
     }
   }
+  //发送验证码
   handleClick = (e) => {
     e.preventDefault();
     let verificationCodeType = this.state.verificationCodeType;
@@ -42,6 +60,7 @@ class Registereda extends React.Component {
       console.log(values.mobile, verificationCodeType);
     });
   }
+  //提交
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -60,6 +79,7 @@ class Registereda extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     let text = this.state.liked ? '获取验证码' : this.state.count + '秒后重发';
+    const { isExist } = this.props;
     return (
       <div className={styles.container}>
         <div className={styles2.wrap + " " + styles.content}>
@@ -69,7 +89,7 @@ class Registereda extends React.Component {
               <FormItem className={styles.form_item}>
                 {getFieldDecorator("mobile", {
                   rules: [{ required: true, message: "请输入手机号码" }, { pattern: /^1[34578]{1}\d{9}$/, message: "您输入的手机号有误" }]
-                })(<Input className={styles.input} placeholder="请输入手机号码" />)}
+                })(<Input className={styles.input} placeholder="请输入手机号码" onBlur={this.ajaxCheck.bind(this)} />)}
               </FormItem>
               <FormItem className={styles.form_item}>
                 {getFieldDecorator("password", {
@@ -107,7 +127,7 @@ class Registereda extends React.Component {
   }
 }
 const Registered = Form.create()(Registereda);
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  return { ...state.registered };
 }
 export default connect(mapStateToProps)(Registered);

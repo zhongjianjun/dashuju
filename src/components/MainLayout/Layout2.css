@@ -11,7 +11,7 @@
 .nav_box .nav_list{float: left;line-height: 60px;margin-left: 25px;}
 .nav_box .nav_link{font-size: 15px;color:#333;line-height: 60px;display: block;}
 
-.header_btn{float: left;padding-top: 12px;padding-left: 20px;}
+.header_btn{float: left;padding-top: 12px;padding-left: 20px;display: none;}
 .header_btn .btn_list{display: block;float: left;height: 34px;line-height: 34px;font-size: 14px;border-radius:3px;width: 70px;text-align: center;margin-left:8px;}
 .header_btn .registered{border:1px solid #2cb7f5;background-color: #2cb7f5;color:#f6fcff;}
 .header_btn .login{border:1px solid #d9d9d9;color:#666;}
